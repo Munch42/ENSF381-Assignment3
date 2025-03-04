@@ -1,0 +1,299 @@
+header {
+    background-color: #004080;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+}
+
+#nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #004080;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+#about {
+    background-color: #d4d4d4;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+#about ul {
+    list-style-position: inside;
+    list-style-type: "-";
+    padding-left: 0px;
+    margin-top: 10px;
+}
+
+ #about li {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d4d4d4;
+    padding: 30px 0px;
+    margin: 0px 150px;
+    border-radius: 30px;
+    box-shadow: 8px 8px 25px lightgray;
+}
+
+#login input {
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+    border: darkgray 3px;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+#login label {
+    margin-bottom: 10px;
+}
+
+#login-submit {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#login-main button {
+    background-color: #008000;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    border: none;
+    margin: 20px 0px;
+}
+
+#login-main button:hover {
+    background-color: #006600;
+}
+
+#login-main a {
+    text-decoration: none;
+    color: #004080;
+    margin-bottom: 30px;
+}
+
+#login-main a:hover {
+    text-decoration: underline;
+}
+
+#login-main h2 {
+    margin-top: 60px;
+}
+
+h2 {
+    color: #004080;
+    text-align: center;
+}
+
+select {
+    background-color: lightyellow;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#term-select {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#term-select select {
+    margin-left: 5px;
+}
+
+.course-view table {
+    width: 100%;
+}
+
+.course-view td {
+    background-color: #e6f2ff;    
+    box-shadow: 8px 8px 25px lightgray;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.course-view td img {
+    width: 100%;
+    height: 100%;
+}
+
+.course-view td a {
+    text-decoration: underline;
+}
+
+.accept-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.accept-btn:hover {
+    background-color: #265e28;
+}
+
+.decline-btn {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.decline-btn:hover {
+    background-color: #821b1b;
+}
+
+
+.quiz-banner {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px; 
+    margin-top: 20px;
+}
+
+.course-quiz-details {
+    background-color: #c6f2ff; 
+    padding: 20px;
+    margin: 0 250px; 
+    text-align: center;
+    
+   
+}
+
+.quiz-questions {
+    margin: 20px 250px;
+    text-align: center;
+     
+}
+.options { 
+    background-color: #cacaca; 
+    padding: 15px;
+    text-align: left;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.submit-button, .finish-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: #c6f2ff; 
+    color: black;
+    margin: 10px auto;
+    display: block;
+    
+}
+
+.submit-button:hover {
+    background-color: #004080; 
+    color: white;
+
+}
+
+.finish-button {
+    background-color: #D32F2F; 
+    color: white;
+    margin: 20px auto;
+    display: block;
+}
+.finish-button:hover {
+    background-color: #821b1b; 
+}
+
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 50px 0;
+}
+
+.leaderboard-table, .leaderboard-table td {
+    border: 3px solid white;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 1px;
+}
+
+.leaderboard-header {
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 50px; 
+    font-weight: bold; 
+    text-align: center;
+}
+
+.gold td {
+    background-color: gold; 
+}
+
+.silver td {
+    background-color: silver; 
+}
+
+.bronze td{
+    background-color: #cd7f32; 
+}
+
+
+.alternate-row:nth-child(even) td {
+    background-color:#e4e2e2; 
+}
+
+.alternate-row:nth-child(odd) td{
+    background-color:#f9f9f9; 
+}
+
+.profile-pic {
+    height: 50px;
+    border-radius: 50%; 
+    border: 1px solid black
+}
+a{
+    text-decoration: none;
+}

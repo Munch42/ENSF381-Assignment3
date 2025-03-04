@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attempt Quiz - LMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="LMS Logo" height="100" width="100">
+        <h1>LMS - Learning Management System</h1>
+        <h2>LMS - Attempt Quiz</h2>
+    </header>
+    
+    <nav id="nav">
+        <a href="index.html">Homepage</a> 
+        <a href="course_view.html">Courses</a>
+    </nav>
+    
+    <main>
+
+        <img src="banner.jpg" alt="Quiz Banner" class="quiz-banner">
+
+  
+        <div class="course-quiz-details">
+            <h2>Course Name: Web Development</h2>
+            <h2>Course Code: WD381</h2>
+            <p>Topic: HTML Basics</p>
+            <p>Deadline: 11:59 PM, February 10, 2025</p>
+            <p>Attempts Allowed: 1</p>
+        </div>
+        
+
+        <div class="quiz-questions">
+            <h3>Question 1</h3>
+            <p>What does HTML stand for?</p>
+            <div class="options">
+                <form>
+                    <input type="radio" id="option1" name="q1" value="Hyper Text Markup Language">
+                    <label for="option1">Hyper Text Markup Language</label><br>
+                    <input type="radio" id="option2" name="q1" value="Home Tool Markup Language">
+                    <label for="option2">Home Tool Markup Language</label><br>
+                </form>
+            </div>
+            <button type="submit" class="submit-button">Submit Answer</button>
+        </div>
+        
+     
+        <div class="quiz-questions">
+            <h3>Question 2</h3>
+            <p>Which of the following are HTML elements? (Select all that apply)</p>
+            <div class="options">
+                <form>
+                    <input type="checkbox" id="div" name="q2" value="div">
+                    <label for="div">&lt;div&gt;</label><br>
+                    <input type="checkbox" id="span" name="q2" value="span">
+                    <label for="span">&lt;span&gt;</label><br>
+                    
+                </form>
+            </div>
+            <button type="submit" class="submit-button">Submit Answer</button>
+        </div>
+
+        <a href="leaderboard.html"><button class="finish-button">Finish Quiz</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 LMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>
