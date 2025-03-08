@@ -31,27 +31,27 @@
                     <td>
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: Web Development
+                        <span class="course-name">Course Name: Web Development</span>
                         <br><br>
-                        Course Code: WD381
-                        <br><br>
-                        <a href="attempt_quiz.html">Attempt Quiz</a>
-                    </td>
-                    <td>
-                        <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
-                        <br><br>
-                        Course Name: Data Structures
-                        <br><br>
-                        Course Code: DS371
+                        <span class="course-code">Course Code: WD381</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
                     <td>
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: DBMS
+                        <span class="course-name">Course Name: Data Structures</span>
                         <br><br>
-                        Course Code: DB346
+                        <span class="course-code">Course Code: DS371</span>
+                        <br><br>
+                        <a href="attempt_quiz.html">Attempt Quiz</a>
+                    </td>
+                    <td>
+                        <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
+                        <br><br>
+                        <span class="course-name">Course Name: DBMS</span>
+                        <br><br>
+                        <span class="course-code">Course Code: DB346</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
@@ -60,18 +60,18 @@
                     <td>
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: Software Testing
+                        <span class="course-name">Course Name: Software Testing</span>
                         <br><br>
-                        Course Code: ST484
+                        <span class="course-code">Course Code: ST484</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
                     <td>
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: Software Architectures
+                        <span class="course-name">Course Name: Software Architectures</span>
                         <br><br>
-                        Course Code: SA396
+                        <span class="course-code">Course Code: SA396</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
@@ -86,9 +86,9 @@
                     <td>
                         <img src="course2.jpg" alt="Pending Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: Data Science
+                        <span class="course-name">Course Name: Data Science</span>
                         <br><br>
-                        Course Code: DS102
+                        <span class="course-code">Course Code: DS102</span>
                         <br><br>
                         <button class="accept-btn">Accept</button>
                         <button class="decline-btn">Decline</button>
@@ -96,9 +96,9 @@
                     <td>
                         <img src="course2.jpg" alt="Pending Course Item Image" width="256" height="192">
                         <br><br>
-                        Course Name: Machine Learning
+                        <span class="course-name">Course Name: Machine Learning</span>
                         <br><br>
-                        Course Code: ML105
+                        <span class="course-code">Course Code: ML105</span>
                         <br><br>
                         <button class="accept-btn">Accept</button>
                         <button class="decline-btn">Decline</button>
@@ -120,11 +120,24 @@
         let acceptButtons = pendingTable[0].getElementsByClassName("accept-btn");
         let declineButtons = pendingTable[0].getElementsByClassName("decline-btn");
 
-        // Todo, make it so that it checks if a row is full and makes a new row if it is, also put it in the row, not the table
+        let numItemsInRow = enrolledTable[0].firstElementChild.children.length;
+
         Array.from(acceptButtons).forEach(element => {
             element.addEventListener("click", () => {
-                enrolledTable[0].appendChild(element.parentNode.cloneNode(true));
+                if (numItemsInRow >= 3) {
+                    enrolledTable[0].firstElementChild.appendChild(enrolledTable[0].firstElementChild.cloneNode(false));
+                    numItemsInRow = 0;
+                }
+            
+                let movedCourse = enrolledTable[0].firstElementChild.firstElementChild.firstElementChild.cloneNode(true);
+                console.log(element.parentElement.getElementsByClassName("course-name")[0]);
+                // Update the data of the copied one to this element's info
+                movedCourse.getElementsByClassName("course-name")[0].textContent = element.parentElement.getElementsByClassName("course-name")[0].textContent;
+                movedCourse.getElementsByClassName("course-code")[0].textContent = element.parentElement.getElementsByClassName("course-code")[0].textContent;
+
+                enrolledTable[0].firstElementChild.lastElementChild.appendChild(movedCourse);
                 element.parentNode.parentNode.removeChild(element.parentElement);
+                numItemsInRow++;
             });
         });
 
@@ -133,6 +146,21 @@
                 element.parentNode.parentNode.removeChild(element.parentElement);
             });
         });
+
+        // Loop through every row and item in the table and add the hover event listener to them.
+        /*Array.from(enrolledTable[0].children).forEach(tableRow => {
+            Array.from(tableRow.children).forEach(tableItem => {
+                let originalStyle = null;
+
+                tableItem.addEventListener("mouseover", (event) => {
+                    event.target.style.backgroundColor = "#ffffff";
+                });
+
+                tableItem.addEventListener("mouseleave", (event) => {
+                    event.target.style.backgroundColor = "#e6f2ff";
+                })
+            });
+        });*/
     </script>
 </body>
 </html>
