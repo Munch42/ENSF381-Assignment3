@@ -66,5 +66,65 @@
     <footer>
         <p>&copy; 2025 LMS. All rights reserved.</p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Timer Logic
+            let timeLeft = 600;
+            const timerDisplay = document.createElement("div");
+            timerDisplay.id = "quiz-timer";
+            timerDisplay.style.fontSize = "20px";
+            timerDisplay.style.fontWeight = "bold";
+            timerDisplay.style.textAlign = "center";
+            document.body.insertBefore(timerDisplay, document.body.firstChild);
+
+            function updateTimer() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.location.href = "leaderboard.html";
+                }
+                timeLeft--;
+            }
+
+            updateTimer();
+            const timer = setInterval(updateTimer, 1000);
+
+            // Answer Validation & Score Calculation
+            document.querySelector(".finish-button").addEventListener("click", function (event) {
+                event.preventDefault();
+                let score = 0;
+
+                // Validate Question 1
+                const q1Answer = document.querySelector("input[name='q1']:checked");
+                if (q1Answer) {
+                    if (q1Answer.value === "Hyper Text Markup Language") {
+                        score += 50;
+                    }
+                } else {
+                    alert("Please answer Question 1 before submitting.");
+                    return;
+                }
+
+                // Validate Question 2
+                const q2Answers = document.querySelectorAll("input[name='q2']:checked");
+                if (q2Answers.length === 0) {
+                    alert("Please select at least one answer for Question 2.");
+                    return;
+                }
+                q2Answers.forEach(answer => {
+                    if (answer.value === "div" || answer.value === "span") {
+                        score += 25;
+                    }
+                });
+
+                // Show Final Score
+                alert(`Quiz submitted! Your final score is: ${score}/100`);
+                window.location.href = "leaderboard.html";
+            });
+        });
+    </script>
 </body>
 </html>
