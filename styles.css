@@ -117,6 +117,60 @@ footer {
     margin-top: 60px;
 }
 
+#signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d4d4d4;
+    padding: 30px 0px;
+    margin: 0px 150px;
+    border-radius: 30px;
+    box-shadow: 8px 8px 25px lightgray;
+    margin-bottom: 10px;
+}
+
+#signup input {
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+    border: darkgray 3px;
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+#signup label {
+    margin-bottom: 10px;
+}
+
+#signup-main button {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    margin: 10px;
+    opacity: 0.5;
+}
+
+#signup-main button:hover {
+    background-color: #45A049;
+    opacity: 1;
+}
+
+#signup-main a {
+    text-decoration: none;
+    color: #004080;
+    margin-bottom: 30px;
+}
+
+#signup-main a:hover {
+    text-decoration: underline;
+}
+
+#signup-main h2 {
+    margin-top: 60px;
+}
+
 h2 {
     color: #004080;
     text-align: center;

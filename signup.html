@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="LMS Logo" height="100" width="100">
+        <h1>LMS - Learning Management System</h1>
+    </header>
+    <div id="nav">
+        <a href="index.html">Homepage</a>
+    </div>
+    <main id="signup-main">
+        <form id="signup-form"> 
+            <h2>Sign Up</h2>
+            <div id="signup">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required><br><br>
+                
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required><br><br>
+                <button type="submit">Sign Up</button><br><br>
+            </div>
+        </form>
+        <div id="message-box"></div> 
+        <div id="login-submit">
+            <a  id="signup-link" href="login.html">Already have an account? Login here</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 LMS. All rights reserved.</p>
+    </footer>
+
+  <script>
+    function validateUsername(username) {
+        let message = "";
+        let valid = true;
+
+        if (username.length < 3 || username.length > 20) {
+            valid = false;
+            message = "Must be between 3 and 20 characters long.";
+        }
+        if (!username.charAt(0).match(/^[a-z]+$/i)) {
+            valid = false;
+            message = `${message} Must start with a letter.`;
+        }
+        if (!username.match(/^[a-z0-9\-\_]+$/i)) {
+            valid = false;
+            message = `${message} Must only contain alphanumeric characters, hypens, and underscores.`;
+        }
+
+        return {valid, message};
+    }
+
+    function validatePassword(password) {
+        let message = "";
+        let valid = true;
+
+        if (password.length < 8) {
+            valid = false;
+            message = "Must be 8 or more characters.";
+        }
+        if (!(password.match(/[A-Z]+/) && password.match(/[a-z]+/) && password.match(/[0-9]+/) && password.match(/[\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\]\{\}\|\;\:\'\"\,\.\<\>\?\/\`\~]+/))) {
+            valid = false;
+            message = `${message} Must contain at least one uppercase letter, one lowercase letter, one number, and one special character.`;
+        }
+        if (!password.match(/^[a-z0-9\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\]\{\}\|\;\:\'\"\,\.\<\>\?\/\`\~]+$/i)) {
+            valid = false;
+            message = `${message} Must only contain alphanumeric characters, and allowed special characters, no spaces.`;
+        }
+
+        return {valid, message};
+    }
+
+    function validateEmail(email) {
+        let message = "";
+        let valid = true;
+
+        if (email.includes(" ")) {
+            valid = false;
+            message = `Must not contain spaces.`;
+        }
+        if (!email.match(/^[a-z0-9\.]+@[a-z0-9]+\.[a-z0-9\.]+$/i)) {
+            valid = false;
+            message = `${message} Invalid email format. Must be of the form text@text.domain`;
+        }
+
+        return {valid, message};
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("signup-form");
+        const messageBox = document.getElementById("message-box");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmed_password = document.getElementById("confirm-password").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            messageBox.textContent = "Validating credentials...";
+
+            // Validate username:
+            let validUsername = validateUsername(username).valid;
+            let message = "";
+            if (!validUsername) {
+                message = `Invalid username (Reason: ${validateUsername(username).message})\n`;
+            }
+
+            let validPassword = validatePassword(password).valid;
+            if(!validPassword) {
+                message = `${message}Invalid password (Reason: ${validatePassword(password).message})\n`;
+            }
+
+            if (!(password == confirmed_password)) {
+                message = `${message}Passwords do not match\n`;
+            }
+
+            let validEmail = validateEmail(email).valid;
+            if (!validEmail) {
+                message = `${message}Invalid email (Reason: ${validateEmail(email).message})`;
+            }
+
+            if (message == "") {
+                message = "Signup successful! Redirecting to login...";
+                messageBox.textContent = message;
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            } else {
+                messageBox.innerHTML = message.replace(/\n/g, '<br>');
+            }
+
+            /*
+            fetch("https://jsonplaceholder.typicode.com/users")
+                .then(response => response.json())
+                .then(users => {
+                    const user = users.find(user => user.username === username && user.email === password);
+
+                    if (user) {
+                        messageBox.textContent = "Login successful! Redirecting...";
+
+                        setTimeout(() => {
+                            window.location.href = "course_view.html";
+                        }, 2000);
+                    } else {
+                        messageBox.textContent = "Invalid username or password!";
+                    }
+                })
+                .catch(() => {
+                    messageBox.textContent = "Error fetching user data.";
+                });*/
+        });
+    });
+</script>
+
+</body>
+</html>
