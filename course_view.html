@@ -28,7 +28,7 @@
             <hr>
             <table class="course-view">
                 <tr>
-                    <td>
+                    <td class="table-data">
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Web Development</span>
@@ -37,7 +37,7 @@
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
-                    <td>
+                    <td class="table-data">
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Data Structures</span>
@@ -46,7 +46,7 @@
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
                     </td>
-                    <td>
+                    <td class="table-data">
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: DBMS</span>
@@ -54,10 +54,10 @@
                         <span class="course-code">Course Code: DB346</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
-                    </td>
+                    </td class="table-data">
                 </tr>
                 <tr>
-                    <td>
+                    <td class="table-data">
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Software Testing</span>
@@ -65,8 +65,8 @@
                         <span class="course-code">Course Code: ST484</span>
                         <br><br>
                         <a href="attempt_quiz.html">Attempt Quiz</a>
-                    </td>
-                    <td>
+                    </td class="table-data">
+                    <td class="table-data">
                         <img src="course1.jpg" alt="Registered Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Software Architectures</span>
@@ -83,7 +83,7 @@
             <hr>
             <table class="course-view">
                 <tr>
-                    <td>
+                    <td class="table-data">
                         <img src="course2.jpg" alt="Pending Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Data Science</span>
@@ -93,7 +93,7 @@
                         <button class="accept-btn">Accept</button>
                         <button class="decline-btn">Decline</button>
                     </td>
-                    <td>
+                    <td class="table-data">
                         <img src="course2.jpg" alt="Pending Course Item Image" width="256" height="192">
                         <br><br>
                         <span class="course-name">Course Name: Machine Learning</span>
@@ -130,11 +130,19 @@
                 }
             
                 let movedCourse = enrolledTable[0].firstElementChild.firstElementChild.firstElementChild.cloneNode(true);
-                console.log(element.parentElement.getElementsByClassName("course-name")[0]);
+
                 // Update the data of the copied one to this element's info
                 movedCourse.getElementsByClassName("course-name")[0].textContent = element.parentElement.getElementsByClassName("course-name")[0].textContent;
                 movedCourse.getElementsByClassName("course-code")[0].textContent = element.parentElement.getElementsByClassName("course-code")[0].textContent;
 
+                movedCourse.addEventListener("mouseover", () => {
+                    movedCourse.style.backgroundColor = "#ffffff";
+                });
+
+                movedCourse.addEventListener("mouseleave", () => {
+                    movedCourse.style.backgroundColor = "#e6f2ff";
+                });
+                
                 enrolledTable[0].firstElementChild.lastElementChild.appendChild(movedCourse);
                 element.parentNode.parentNode.removeChild(element.parentElement);
                 numItemsInRow++;
@@ -147,20 +155,28 @@
             });
         });
 
-        // Loop through every row and item in the table and add the hover event listener to them.
-        /*Array.from(enrolledTable[0].children).forEach(tableRow => {
-            Array.from(tableRow.children).forEach(tableItem => {
-                let originalStyle = null;
+        let enrolledTableData = enrolledTable[0].getElementsByClassName("table-data");
+        let pendingTableData = pendingTable[0].getElementsByClassName("table-data");
 
-                tableItem.addEventListener("mouseover", (event) => {
-                    event.target.style.backgroundColor = "#ffffff";
-                });
-
-                tableItem.addEventListener("mouseleave", (event) => {
-                    event.target.style.backgroundColor = "#e6f2ff";
-                })
+        Array.from(enrolledTableData).forEach(tableData => {
+            tableData.addEventListener("mouseover", () => {
+                tableData.style.backgroundColor = "#ffffff";
             });
-        });*/
-    </script>
+
+            tableData.addEventListener("mouseleave", () => {
+                tableData.style.backgroundColor = "#e6f2ff";
+            });
+        });
+
+        Array.from(pendingTableData).forEach(tableData => {
+            tableData.addEventListener("mouseover", () => {
+                tableData.style.backgroundColor = "#ffffff";
+            });
+
+            tableData.addEventListener("mouseleave", () => {
+                tableData.style.backgroundColor = "#e6f2ff";
+            });
+        });
+   </script>
 </body>
 </html>
